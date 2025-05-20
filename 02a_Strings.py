@@ -36,7 +36,7 @@ print(str_con_comillas)
 # COMPROBACION DEL TIPO DE VARIABLE
 type(saludo1)
 type(saludo2)
-type(alfabeto)
+type(alfabeto)b_Listas y otros 
 type(numeros)
 
 

@@ -16,7 +16,6 @@ por ejemplo, del 1 al 100.
 
 
 
-
 # 2. Suma de números primos:
 """
 Crea un programa que solicite al usuario un número y utilice un bucle 
