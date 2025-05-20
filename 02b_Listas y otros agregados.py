@@ -3,17 +3,14 @@
 #########################
 
 lista_vacia = []
-
-# Lista de texto.
-semana = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"]
-semana_iniciales = list(("L", "M", "X", "J", "V", "S", "D"))
-
 # Lista numerica.
 enteros = [1, 2, 3, 4, 5, 6, 7]
 # El primer carácter es el 0
 enteros[0]
 
 type(enteros)
+semana=["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"]
+semana_iniciales = list(("L", "M", "X", "J", "V", "S", "D"))
 type(semana)
 type(semana_iniciales)
 type(enteros[0])
@@ -138,7 +135,7 @@ print(valor)
 valor = lista_mixta.pop(1)
 print(valor, lista_mixta)
 
-# Borrar los elementos de la lista.
+# Borrar los elementos de la lihttps://github.com/Aitor-Donado/python_c2b.gitsta.
 lista_mixta_cp.clear()
 lista_mixta_cp.append(17)
 # Eliminar la lista
@@ -200,7 +197,7 @@ tupla = (1,)
 # Si no, ignora el paréntesis
 numero = (1)
 # Es un entero, no una tupla
-type(numero)
+type(tupla)
 
 # También podemos hacer desempaquetado
 tupla_sin_parentesis = "casa", "Iturribide", 12
@@ -215,6 +212,7 @@ tupla_mixta[2:]
 # PERO LAS TUPLAS NO SON MUTABLES
 tupla_mixta[0] = 2
 tupla_mixta.sort()
+tupla_mixta.append(17)
 
 # MEDIMOS LA LONGITUD
 len(tupla_mixta)
@@ -238,6 +236,8 @@ tupla_repe = 2 * tupla_mixta
 
 # CREAMOS EL DICCIONARIO
 diccionario = {"clave": [1,2]}
+diccionario2 = dict(clave=[1,2])
+
 reyes_espana = {
     "Godos": ["Ataulfo", "Sigerico", "Teodorico", "Eurico", "Leovigildo", "Recaredo", "Suintila", "Sisenando", "Chintila", "Tulga", "Witerico", "Gundemaro", "Sisebuto", "Suintila II", "Recesvinto", "Wamba", "Ervigio", "Witiza", "Rodrigo"],
     "Austrias": ["Felipe I", "Carlos I", "Felipe II", "Felipe III", "Felipe IV", "Carlos II"],
@@ -268,7 +268,7 @@ type(diccionario_valores)
 # El tipo dict_values no es indexable
 diccionario_valores[0]
 lista_valores = list(diccionario_valores)
-lista_valores[2]
+lista_valores[0]
 # Puedo indexar y recorrer `lista_valores` con bucles for, pero pierdo la información de las claves
 
 # Obtener la última clave de un diccionario
@@ -283,6 +283,7 @@ reyes_espana.get(list(reyes_espana.keys())[-1])
 # Crea un conjunto con una serie de elementos entre llaves
 # Los elementos repetidos se eliminan
 numeros = {1, 3, 2, 9, 3, 1}
+numeros2 = set((1, 3, 2, 9, 3, 1))
 numeros[0]
 
 tallas = {"M", "S", "M", "XXL", "S", "M", "L", "S", "XL", "M", "L", "M", "XS", "S", "M"}
@@ -320,8 +321,8 @@ numeros.union(letras)
 numeros & unicos
 numeros.intersection(unicos)
 
+numeros.add(6)
 numeros.isdisjoint(unicos)
 
 numeros.isdisjoint(letras)
 
-numeros.add(0)
