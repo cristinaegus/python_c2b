@@ -156,41 +156,45 @@ def calculadora_areas():
 calculadora_areas()
 
 
-
-
-
-
-
-
-
 # 4. Inversión de Cadena:
 """
 Crea una función que tome una cadena como entrada y devuelva la cadena invertida. 
 Por ejemplo, si la entrada es "python", la salida debería ser "nohtyp".
 """
+cadena = "supercalifragilisticoespialidoso"
+cadena_invertida = cadena[::-1]
 
 
+def invertir_cadena(cadena):
+    cadena_invertida = ""
+    for letra in cadena:
+        cadena_invertida = letra + cadena_invertida
+    return cadena_invertida
 
-
-
-
-
-
+invertir_cadena(cadena)
 
 # 5. Contador de Palabras:
 """
 Desarrolla una función que cuente el número de palabras en una oración. 
 Pide al usuario que ingrese una oración y muestra el resultado.
 """
+def cuenta_palabras(frase):
+    while "  " in frase:
+        frase = frase.replace("  ", " ")
+    contador = 0
+    for letra in frase:
+        if letra == " ":
+            contador += 1
+    return contador + 1
 
+def cuenta_palabras2(frase):
+    return len(frase.split())
 
+def pide_palabras():
+    frase = input("Ingrese una frase: ")
+    print(f"La frase tiene {cuenta_palabras2(frase)} palabras")
 
-
-
-
-
-
-
+pide_palabras()
 
 
 # 6. Fibonacci:
@@ -198,15 +202,38 @@ Pide al usuario que ingrese una oración y muestra el resultado.
 Implementa una función para generar los primeros n números de la 
 secuencia de Fibonacci. Pide al usuario que ingrese el valor de n.
 """
+def fibonacci(n):
+    if n == 0:
+        return []
+    elif n == 1:
+        return [0]
+    elif n == 2:
+        return [0, 1]
+    else:
+        fib = [0, 1]
+        for i in range(2, n):
+            fib.append(fib[i-1] + fib[i-2])
+        return fib
 
-
+print(fibonacci(10))
 
 # 7. Ordenar Lista:
 """
 Escribe una función que ordene una lista de números de manera ascendente 
 o descendente según la elección del usuario.
 """
+max([5,4,7,2,5,3,6])
+def ordena_lista(lista, orden_ascendente=True):
+    lista_salida = []
+    operacion = min if orden_ascendente else max
+    while lista:
+        menor = operacion(lista)
+        lista.remove(menor)
+        lista_salida.append(menor)
+    return lista_salida
 
+print(ordena_lista([5,4,7,2,5,3,6], False))
+        
 
 # 8. Factorial:
 """
@@ -214,12 +241,17 @@ Crea una función para calcular el factorial de un número.
 Pide al usuario que ingrese un número y muestra el resultado.
 """
 
+
+
+
 # 9. Conversión de Temperatura:
 """
 Implementa funciones para convertir entre Celsius y Fahrenheit. 
 Pide al usuario que ingrese la temperatura y la unidad, y luego 
 realiza la conversión.
 """
+
+
 
 # 10. Juego de Adivinanzas:
 """
