@@ -36,7 +36,7 @@ match dia:
 # Debe colocarse al final porque siempre hace match
 
 print("\nEjemplo con caso por defecto:")
-dia = 8
+dia = 6
 match dia:
     case 6:
         print("Hoy es Sábado")
@@ -77,7 +77,7 @@ match dia:
 # También funciona con listas, tuplas y diccionarios
 
 print("\nEjemplo con patrones complejos:")
-punto = (2, 3)
+punto = (0, 0)
 match punto:
     case (0, 0):
         print("Origen")
