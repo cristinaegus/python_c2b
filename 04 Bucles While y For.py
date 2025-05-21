@@ -7,9 +7,9 @@
 #################
 # Imprimir una secuencia de números menor que 10
 contador = 0
-while contador < 10:
-    print(contador)
+while contador <= 10:
     contador = contador +1
+    print(contador)
 
 
 # Podemos romper un bucle while si se cumple una condición
@@ -53,7 +53,7 @@ contador = 0
 while contador**3 < x:
     contador = contador + 1
     if contador**3 != x:
-        print(str(x), 'no es un cubo perfecto de', contador)
+        print(x , 'no es un cubo perfecto de', contador)
     else:
         print('El cubo de', str(contador), 'es', str(x))
 
@@ -94,7 +94,8 @@ for elemento in lista:
 
 for elemento in rango:
     print(2*elemento/3)
-
+for elemento in [1, 2, 3, 4, "Hola", 6, 7, 8, 9]:
+    print(elemento)
 # Imprimir una secuencia de números en orden descendiente de 5.
 for a in range(150, 100, -5):
     print("a:", a)

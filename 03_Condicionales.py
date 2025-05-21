@@ -3,16 +3,15 @@
 ####################################
 
 # Creamos una lista.
-a = [4, 0, 3, 4, 5]
+a = [6, 0, 3, 4, 5]
 
 
 # Ejemplo de condicional simple
 if a[0] > a[-1]:
-
     print("Se ejecuta cuando el primer elemento de la lista es mayor que el último")
-    if a[1] < a[2]:
-        d = 34 * a[0]
-        print(d)
+    if a[1] > a[2]:
+        f = 34 * a[0]
+        print(f)
 
 print(a)
 
@@ -24,7 +23,7 @@ else:
 
 
 # Cambiamos el orden de la lista y ejecutamos el mismo código.
-a.sort(reverse=True)
+a.sort()
 
 # Repetimos la condicion.
 if a[0] > a[-1]:
@@ -60,7 +59,7 @@ else:
     print(f"El primer elemento de la lista es menor que el último y es {a[0]}")
 
 # Uso de una variable límite
-limite = -5
+limite = 0
 
 if a[0] > limite:
     print(f"El primer elemento de la lista es mayor que el límite y es {a[0]}")
