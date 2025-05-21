@@ -1,9 +1,3 @@
-"""
-Spyder Editor
-
-This is a temporary script file.
-"""
-
 # 1. Calculadora Simple:
 """
 Crea una función que pueda realizar operaciones básicas como suma, resta, 

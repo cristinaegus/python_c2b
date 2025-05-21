@@ -75,8 +75,8 @@ print(list(rango_desde_cero))
 # El objeto rango no devuelve sus valores hasta que se itera sobre él
 
 # Imprimir un rango de números
-for a in range(1, 10):
-    print(a)
+for _ in range(1, 10):
+    print("Hola")
 
 for elemento in [1, 2, 3, 4, "Hola", 6, 7, 8, 9]:
     print(elemento)
@@ -86,6 +86,7 @@ lista_con_rango = list(range(1, 10))
 rango = range(7)
 
 lista = ["Madrid", "Barcelona", "Bilbao"]
+lista = [1,2,3]
 
 for elemento in lista:
     salida = elemento.upper()
@@ -94,8 +95,11 @@ for elemento in lista:
 
 for elemento in rango:
     print(2*elemento/3)
+
+
 for elemento in [1, 2, 3, 4, "Hola", 6, 7, 8, 9]:
     print(elemento)
+
 # Imprimir una secuencia de números en orden descendiente de 5.
 for a in range(150, 100, -5):
     print("a:", a)
@@ -129,6 +133,12 @@ for indice in range(len(cadena)):
 cadena = input('Introduce una cadena de texto en minúsculas: ')
 
 for letra in cadena:
+    if letra == "i" or letra == "u":
+        print("La cadena contiene una i o una u")
+        print(letra)
+        break
+
+for letra in cadena:
     if (letra == "c"):
         print("La cadena contiene una c")
         print(letra)
@@ -148,7 +158,7 @@ for letra in cadena:
         print("La cadena contiene una i o una u")
         print(letra)
 
-# Tambien podemos hacerlo dos búsquedas por separado.
+# Tambien podemos hacerlo con dos búsquedas por separado.
 cadena = input('Introduce una cadena de texto en minúsculas: ').lower()
 
 
@@ -176,7 +186,7 @@ otro iterable que se le pase como argumento.
 """
 
 provincias = ["Bizkaia", "Gipuzkoa", "Álava", 'Navarra']
-capitales = ['Bilbao', 'San Sebastián', 'Vitoria', "Pamplona"]
+capitales = ['Bilbao', 'San Sebastián', 'Vitoria', 'Pamplona']
 
 combinados = zip(provincias, capitales)
 print(list(combinados))
@@ -190,4 +200,5 @@ print(list(enumerate(provincias)))
 
 for indice, provincia in enumerate(provincias):
     print(f"La provincia número {indice} es {provincia}")
-    print(capitales[indice])
+    if "u" in provincia:
+        print(capitales[indice])
