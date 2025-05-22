@@ -88,10 +88,11 @@ def doblar_valores(numeros):
     """
     Comprensión de lista (List comprehension)
     """
-    copia_numeros = [n * 2 for n in numeros]
-    #copia_numeros = numeros[:]
-    #copia_numeros = numeros.copy()
-    print("El valor de 'numeros' dentro de la función es", copia_numeros)
+    numeros.append(7)
+    numeros = [n * 2 for n in numeros]
+    numeros = numeros[:]
+    numeros = numeros.copy()
+    print("El valor de 'numeros' dentro de la función es", numeros)
 
 doblar_valores(numeros)
 print("El valor de 'numeros' fuera de la función es", numeros)

@@ -5,6 +5,7 @@
 
 from funciones.circulo import area, perimetro
 
+
 # Si el archivo .py estuviera más arriba en el arbol de carpetas:
 # from ..funciones.circulo import area
 perimetro(5)
@@ -22,7 +23,7 @@ import os
 os.chdir(r"/home/laptop/Proyectos Python/Introduccion_Python/funciones/")
 # Ya se puede importar
 import circulo
-os.chdir(r"/home/laptop/Proyectos Python/Introduccion_Python")
+os.chdir(r"/home/laptop/Proyectos Python/python_c2b/")
 
 # 2. Añadiendo la ubicación del directorio en el que está circulo al path
 import sys
@@ -110,7 +111,7 @@ fichero.write('Ekaitz' + '\n')
 fichero.close()
 
 fichero = open("datos/nombres.txt", "a")
-fichero.write('Aitor' + '\n')
+fichero.write('Íñigo' + '\n')
 fichero.close()
 
 
@@ -140,6 +141,7 @@ lo que podría causar problemas de rendimiento o corrupción de datos.
 with open('datos/quijote.txt', 'r', encoding="utf8") as archivo:
     contenido = archivo.read()
 
+print(archivo)
 print(contenido[:300])
 
 # Usando el puntero
@@ -169,7 +171,7 @@ fichero = open('datos/fichero2.txt', 'r+')
 fichero.write("0123456789")
 fichero.close()
 
-with open('datos/fichero.txt', 'r', encoding="utf8") as archivo:
+with open('datos/fichero2.txt', 'r', encoding="utf8") as archivo:
     print(archivo.read())
 
 
@@ -194,7 +196,7 @@ fichero = open('datos/fichero2.txt', 'r+')
 texto = fichero.readlines()
 
 # Modificamos la línea que queramos a partir del índice
-texto[2] = "Esta es la línea 3 modificada\n"
+texto[1] = "Esta es la línea 2 modificada\n"
 
 # Volvemos a poner el puntero al inicio y reescribimos
 fichero.seek(0)
