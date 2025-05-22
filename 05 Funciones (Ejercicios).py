@@ -240,8 +240,15 @@ print(ordena_lista([5,4,7,2,5,3,6], False))
 Crea una función para calcular el factorial de un número. 
 Pide al usuario que ingrese un número y muestra el resultado.
 """
+def factorial(n):
+    resultado = 1
+    factor = 2
+    while n>=factor:
+        resultado *= factor
+        factor += 1
+    return resultado
 
-
+print(factorial(50))
 
 
 # 9. Conversión de Temperatura:
@@ -250,7 +257,26 @@ Implementa funciones para convertir entre Celsius y Fahrenheit.
 Pide al usuario que ingrese la temperatura y la unidad, y luego 
 realiza la conversión.
 """
+def celsius_a_fahrenheit(celsius):
+    return (celsius * 9/5) + 32
 
+def fahrenheit_a_celsius(fahrenheit):
+    return (fahrenheit - 32) * 5/9
+
+def conversion_temperatura():
+    unidad = input("Ingrese la unidad de temperatura (C/F): ").upper()
+    if unidad == "C":
+        temperatura = float(input("Ingrese la temperatura: "))
+        resultado = celsius_a_fahrenheit(temperatura)
+        print(f"{temperatura} grados Celsius son {resultado} grados Fahrenheit.")
+    elif unidad == "F":
+        temperatura = float(input("Ingrese la temperatura: "))
+        resultado = fahrenheit_a_celsius(temperatura)
+        print(f"{temperatura} grados Fahrenheit son {resultado} grados Celsius.")
+    else:
+        print("Unidad no válida. Por favor, ingrese 'C' o 'F'.")
+
+conversion_temperatura()
 
 
 # 10. Juego de Adivinanzas:
@@ -260,3 +286,5 @@ y el jugador tiene que adivinarlo.
 Proporciona pistas sobre si el número es mayor o menor. 
 Utiliza funciones para organizar el código.
 """
+from juego import *
+adivina_numero()
