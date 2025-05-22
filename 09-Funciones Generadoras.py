@@ -62,6 +62,7 @@ Con esto se logra
 """
 
 generador_de_primos = primos(5,45)
+print(generador_de_primos)
 # Cuando creamos el generador aún no se ha ejecutado la instrucción
 next(generador_de_primos)
 # Al pedir "next" se ejecuta la instrucción y nos va devolviendo los valores
@@ -114,7 +115,6 @@ generador_de_primos = primos(0,100)
 
 [numero for numero in generador_de_primos if str(numero)[-1] == "7"]
 
-
 #___________#
 # Ejercicio #
 #-----------#
@@ -122,11 +122,24 @@ generador_de_primos = primos(0,100)
 # Usar ese generador para leer El Quijote, cuando el generador encuentre la palabra Quijote,
 # imprime la línea y para hasta que el usuario le da a "intro" (con un input vacío)
 
-
 #__________#
 # Solución #
 #----------#
 
+def buscar_en_fichero(archivo, personaje, codificacion="utf-8"):
+    """Generador que busca en un fichero líneas que contengan una subcadena coincidente"""
+    # Abre el archivo en modo lectura
+    with open(archivo, "r", encoding=codificacion) as fichero:
+        # Itera sobre cada línea del archivo
+        for linea in fichero:
+            # Si la subcadena personaje está en la línea, la devuelve
+            if personaje in linea:
+                yield linea
 
+generador_quijotes = buscar_en_fichero("datos/quijote.txt", "Dulcinea")
+
+for linea in generador_quijotes:
+    print(linea, end="")
+    input()
 
 
