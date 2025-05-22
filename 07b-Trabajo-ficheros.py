@@ -152,7 +152,12 @@ class Catalogo:
         except:
             print("El fichero está vacío")
         finally:
-            fichero.close()
+            # Constructor de clase
+    def __init__(self, titulo, duracion, lanzamiento):
+        self.titulo = titulo
+        self.duracion = duracion
+        self.lanzamiento = lanzamiento
+        print('Se ha creado la película:', self.titulo)  fichero.close()
             print("Se han cargado {} películas".format(len(self.peliculas)))
 
     def guardar(self):

@@ -23,7 +23,7 @@ Created on Tue Mar  7 17:49:57 2023
 # Errores de nombre
 # Al ejecutar alguna función, método... que no se encuentra definido. Devuelven el código NameError:
 
-#pint("Hola")
+# pint("Hola")
 
 # Mensaje -> NameError: name 'pint' is not defined
 # La mayoría de errores sintácticos y de nombre los identifican
@@ -70,7 +70,7 @@ print("Sigo")
 
 # Como ya sabemos este error se elimina transformando la cadena a entero o flotante:
 numerador = float(input("Introduce un número: "))
-denominador = 5
+denominador = 0
 print("El numerador {} dividido entre el denominador {} es {}".
     format(numerador, denominador, numerador/denominador))
 
@@ -108,7 +108,7 @@ print("Sigo")
 # un número haciendo con un bucle while.
 while(True):
     try:
-        numerador = float(input("Introduce un número: "))
+        numerador = input("Introduce un número: ")
         denominador = 5
         print("El numerador {} dividido entre el denominador {} es {}".
             format(numerador, denominador, numerador/denominador))
@@ -121,7 +121,7 @@ while(True):
 
 while(True):
     try:
-        numerador = float(input("Introduce un número: "))
+        numerador = input("Introduce un número: ")
         denominador = 5
         print("El numerador {} dividido entre el denominador {} es {}".
             format(numerador, denominador, numerador/denominador))
@@ -159,7 +159,7 @@ while(True):
 while True:
     try:
         numerador = float(input("Introduce un número: "))
-        denominador = input("Introduce otro número: ")
+        denominador = float(input("Introduce otro número: "))
         print("El numerador {} dividido entre el denominador {} es {}".
             format(numerador, denominador, numerador/denominador))
     except Exception as e:  # guardamos la excepción como una variable e
@@ -184,10 +184,10 @@ Excepcion que engloba cualquier tipo de error
 while True:
     try:
         numerador = float(input("Introduce un número: "))
-        denominador = (input("Introduce otro número: "))
+        denominador = float(input("Introduce otro número: "))
         print("El numerador {} dividido entre el denominador {} es {}".
             format(numerador, denominador, numerador/denominador))
-    except ValueError:
+    except TypeError:
         print("Debes introducir una cadena que sea un número")
     except ZeroDivisionError:
         print("No se puede dividir por cero, prueba otro número")
@@ -240,21 +240,39 @@ mi_funcion_print_utilizada()
 # 1. Crear una función que genere una excepción de tipo "ValueError" si el usuario
 # introduce una edad por consola que sea negativa o mayor de 120 años.
 
-
-
 #__________#
 # Solución #
 #----------#
-
-
+def edad_valida():
+    edad_str = input("Introduce tu edad: ").replace("-", "")
+    if not edad_str.isnumeric():
+        raise TypeError("La edad debe ser un número")
+    edad = int(edad_str)
+    if edad < 0 or edad > 120:
+        raise ValueError("La edad debe ser un número entre 0 y 120")
+    else:
+        print("La edad es correcta")
+    return edad
 
 
 # 2. A continuación, un bucle infinito "while True" que pida la edad y trate el error
 # generado por la función. El bucle parará cuando la edad sea correcta.
 
-
-
 #__________#
 # Solución #
 #----------#
 
+while True:
+    try:
+        edad = edad_valida()
+    except ValueError as e:
+        print(e)
+    except TypeError as e:
+        print("Eso no es convertible en número")
+        print(e)
+    except Exception as e:
+        print("Error no previsto", type(e).__name__)
+    else:
+        print("No hay error, almaceno el valor")
+        break
+print("La edad es correcta")
