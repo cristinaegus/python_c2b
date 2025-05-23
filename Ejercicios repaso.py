@@ -255,6 +255,17 @@ def mostrar_lista_compra(lista_compra):
     for indice, producto in enumerate(lista_compra, start=1):
         print(f"{indice}. {producto}")
     print(f"\nTotal de productos: {len(lista_compra)}")
+    with open('lista_compra.txt', 'w') as archivo:
+        for producto in lista_compra:
+            archivo.write(producto + '\n')
+
+def cargar_lista_compra():
+    try:
+        with open('lista_compra.txt', 'r') as archivo:
+            return [linea.strip() for linea in archivo]
+    except FileNotFoundError:
+        return []
+
 
 def llena_lista_compra(lista_compra):
     for i in range(5):
@@ -264,25 +275,52 @@ def llena_lista_compra(lista_compra):
             break
         lista_compra.append(producto)
 
-def lista_compra():
-    lista_compra = []
+def eliminar_producto(lista_compra):
+    producto_eliminar = input("Ingrese el número del producto a eliminar: ")
+    if producto_eliminar in lista_compra:
+        lista_compra.remove(producto_eliminar)
+    else:
+        lista_compra.pop(int(producto_eliminar)-1)
+    mostrar_lista_compra(lista_compra)
+    return input("\n¿Desea eliminar algún producto más? (s/n): ").lower()
+
+def mostrar_menu():
+    print("\nMenú:")
+    print("1. Agregar producto")
+    print("2. Eliminar producto")
+    print("3. Mostrar lista")
+    print("4. Salir")
+    return input("Ingrese una opción: ")
+
+def menu(lista_compra):
+    while True:
+        opcion = mostrar_menu()
+        match opcion:
+            case '1':
+                llena_lista_compra(lista_compra)
+                mostrar_lista_compra(lista_compra)
+            case '2':
+                eliminar_producto(lista_compra)
+            case '3':
+                mostrar_lista_compra(lista_compra)
+            case '4':
+                print("Saliendo del programa...")
+                break
+            case _:
+                print("Opción no válida. Intente de nuevo.")
+
+
+def gestor_lista_compra():
+    lista_compra = cargar_lista_compra()
     if not lista_compra:
         print("La lista está vacía, ingrese 5 productos")
         llena_lista_compra(lista_compra)
     else: 
         mostrar_lista_compra(lista_compra)
+        menu(lista_compra)
 
-    eliminar = input("\n¿Desea eliminar algún producto? (s/n): ").lower()
-    if eliminar == 's':
-        producto_eliminar = input("Ingrese el número del producto a eliminar: ")
-        if producto_eliminar in lista_compra:
-            lista_compra.remove(producto_eliminar)
-            mostrar_lista_compra(lista_compra)
-        else:
-            lista_compra.pop(int(producto_eliminar)-1)
-            mostrar_lista_compra(lista_compra)
         
-lista_compra()
+gestor_lista_compra()
 
 
 #Desafío: Contador de Palabras en un Archivo#
