@@ -183,10 +183,63 @@ print(f"6. Intersección de ambos sets: {interseccion}")
 3. Usa una estructura `match-case` para ejecutar la acción correspondiente a la opción elegida.
 4. Si la opción no es válida, muestra un mensaje de error.
 """
+import datetime
 
-"""
+def escribir_archivo():
+    """Función para escribir texto en un archivo"""
+    nombre_archivo = input("Ingrese el nombre del archivo: ")
+    texto = input("Escriba el texto a guardar: ")
+    with open(nombre_archivo, 'w') as archivo:
+        archivo.write(texto)
+    print(f"Texto guardado correctamente en {nombre_archivo}")
+
+def leer_archivo():
+    """Función para leer y mostrar contenido de un archivo"""
+    nombre_archivo = input("Ingrese el nombre del archivo a leer: ")
+    try:
+        with open(nombre_archivo, 'r') as archivo:
+            contenido = archivo.read()
+        print("\nContenido del archivo:")
+        print(contenido)
+    except FileNotFoundError:
+        print("Error: El archivo no existe")
+
+def mostrar_fecha():
+    """Función para mostrar la fecha y hora actual"""
+    ahora = datetime.datetime.now()
+    print(f"\nFecha y hora actual: {ahora.strftime('%d/%m/%Y %H:%M:%S')}")
+
+def mostrar_menu():
+    """Muestra el menú de opciones"""
+    print("\n--- MENÚ PRINCIPAL ---")
+    print("1. Escribir texto en un archivo")
+    print("2. Mostrar el texto escrito en un archivo")
+    print("3. Mostrar fecha actual")
+    print("4. Salir del programa")
+
+def aplicacion():
+    """Función principal del programa"""
+    while True:
+        mostrar_menu()
+        opcion = input("\nSeleccione una opción (1-4): ")
+        
+        match opcion:
+            case '1':
+                escribir_archivo()
+            case '2':
+                leer_archivo()
+            case '3':
+                mostrar_fecha()
+            case '4':
+                print("\nSaliendo del programa... ¡Hasta luego!")
+                break
+            case _:
+                print("\nOpción no válida. Por favor ingrese un número del 1 al 4")
+
+aplicacion()
+
 #Ejercicio 6: Lista de la Compra#
-
+"""
 1. Crea una lista vacía llamada `lista_compra`.
 2. Pide al usuario que ingrese 5 productos para añadir a la lista.
 3. Muestra la lista completa.
