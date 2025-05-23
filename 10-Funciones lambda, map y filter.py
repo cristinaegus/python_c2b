@@ -5,8 +5,6 @@ Created on Thu Mar  9 21:51:51 2023
 
 @author: laptop
 """
-
-
 def divide2(num):
     print(f"Divido {num} entre 2")
     return num/2
@@ -132,6 +130,8 @@ Se pueden usar en cualquier lugar en el que una función sea requerida.
 def doble(num):
     return num*2
 
+lambda num:  num*2
+
 # Lambda por reducción de una función sencilla
 iterable2 = map(lambda num: num * 2, lista_num)
 
@@ -145,6 +145,8 @@ next(iterable2)
 next(iterable2)
 next(iterable2)
 
+
+
 # Lambda con múltiples parámetros
 iterable3 = map(lambda x, y: x + y, lista_num, lista_num2)
 
@@ -154,13 +156,15 @@ lista_num3 = list(iterable3)
 # Ejercicio #
 #-----------#
 # Crear una lista con los números de 0 al 100.
-
+lista_100 = list(range(0, 101))
 
 # Dividirlos entre tres con map y una función lambda.
-
+lista_divididos = list(map(lambda x: x/3, lista_100))
 
 # Filtrar los que tienen parte decimal con una función lambda.
+lambda num: num != int(num)
 
+fraccionarios = list(filter(lambda num: num != int(num), lista_divididos))
 
 #__________#
 # Solución #
@@ -178,6 +182,31 @@ edades.count(121)
 
 
 # Usar filter para eliminar los valores
+def es_correcto(edad):
+    return not (edad > 120 or edad < 0)
+lambda edad: not (edad > 120 or edad < 0)
 
+edades_correctas = list(filter(lambda edad: not (edad > 120 or edad < 0), edades))
+edades_correctas.count(-3)
+edades_correctas.count(121)
+
+len(edades_correctas)
 
 # Usar map para sustituirlos por 120 o 0
+def corrector_edades(edad):
+    if edad >120:
+        return 120
+    elif edad < 0:
+        return 0
+    else:
+        return edad
+    
+edades_corregidas = list(map(corrector_edades, edades))
+edades_corregidas.count(-3)
+edades_corregidas.count(121)
+
+len(edades_corregidas)
+
+lambda edad: 120 if edad > 120 else 0 if edad < 0 else edad
+
+edades_corregidas = list(map(lambda edad: 120 if edad > 120 else 0 if edad < 0 else edad, edades))
