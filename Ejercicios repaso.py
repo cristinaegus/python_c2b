@@ -250,6 +250,39 @@ aplicacion()
 8. Utiliza el bloque `with open(...)` para asegurar que los archivos se cierren correctamente.
 9. Utiliza `try-except` para manejar posibles `FileNotFoundError` si el archivo no existe al intentar leerlo por primera vez (en ese caso, simplemente informa que no hay tareas).
 """
+def mostrar_lista_compra(lista_compra):
+    print("\nLista de compra completa:")
+    for indice, producto in enumerate(lista_compra, start=1):
+        print(f"{indice}. {producto}")
+    print(f"\nTotal de productos: {len(lista_compra)}")
+
+def llena_lista_compra(lista_compra):
+    for i in range(5):
+        producto = input(f"Ingrese el producto {i+1} (c=cancelar): ")
+        if producto.lower() == 'c':
+            mostrar_lista_compra(lista_compra)
+            break
+        lista_compra.append(producto)
+
+def lista_compra():
+    lista_compra = []
+    if not lista_compra:
+        print("La lista está vacía, ingrese 5 productos")
+        llena_lista_compra(lista_compra)
+    else: 
+        mostrar_lista_compra(lista_compra)
+
+    eliminar = input("\n¿Desea eliminar algún producto? (s/n): ").lower()
+    if eliminar == 's':
+        producto_eliminar = input("Ingrese el número del producto a eliminar: ")
+        if producto_eliminar in lista_compra:
+            lista_compra.remove(producto_eliminar)
+            mostrar_lista_compra(lista_compra)
+        else:
+            lista_compra.pop(int(producto_eliminar)-1)
+            mostrar_lista_compra(lista_compra)
+        
+lista_compra()
 
 
 #Desafío: Contador de Palabras en un Archivo#
