@@ -145,6 +145,28 @@ print("Diccionario final completo:", contacto_resultante)
 6. Muestra la intersección de ambos sets.
 """
 
+# 1. Lista con elementos duplicados
+numeros = [1, 2, 2, 3, 4, 4, 4, 5]
+print(f"\n1. Lista original con duplicados: {numeros}")
+
+# 2. Convertir a set para eliminar duplicados
+numeros_sin_duplicados = set(numeros)
+
+# 3. Mostrar el set resultante (ya hecho en el paso anterior)
+print(f"2. Set sin duplicados: {numeros_sin_duplicados}")
+
+# 4. Crear otro set
+otros_numeros = {4, 5, 6, 7}
+print(f"\n4. Segundo set creado: {otros_numeros}")
+
+# 5. Mostrar unión de ambos sets
+union = numeros_sin_duplicados.union(otros_numeros)
+print(f"5. Unión de ambos sets: {union}")
+
+# 6. Mostrar intersección de ambos sets
+interseccion = numeros_sin_duplicados.intersection(otros_numeros)
+print(f"6. Intersección de ambos sets: {interseccion}")
+    
 
 #Ejercicio 5: Menú de Opciones (con `match`)#
 """
