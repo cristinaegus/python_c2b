@@ -37,7 +37,7 @@ def calcular_edad(nacimiento: datetime.date) -> int:
     
     # Si el cumpleaños no ha llegado aún este año, restar un año a la edad
     dias_desde_cumple = (hoy - cumpleannos).days
-    edad -= 1 if dias_desde_cumple <= 0 else 0
+    edad -= 1 if dias_desde_cumple < 0 else 0
     
     # Si hoy es el cumpleaños, felicitar
     if dias_desde_cumple==0:
@@ -53,9 +53,10 @@ def saludo_personalizado():
     edad = calcular_edad(nacimiento_fecha)
     print(f"¡Hola, {nombre}! Tienes {edad} años pero aparentas mucho menos y naciste en {nacimiento_fecha.year}.")
 
+(4,30) < (5,1)
 
 saludo_personalizado()
-
+22
 
 #Ejercicio 2: Operaciones con Cadenas#
 """
@@ -68,7 +69,19 @@ saludo_personalizado()
     - Las tres últimas letras de la frase.
     - La frase con todas las 'a' reemplazadas por una 'e'.
 """
+import re
+def pide_frase():
+    frase = input("Ingresa una frase: ")
+    print(f"La longitud de la frase es: {len(frase)}")
+    print(f"La frase en mayúsculas es: {frase.upper()}")
+    print(f"La frase en minúsculas es: {frase.lower()}")
+    print(f"Las tres primeras letras de la frase son: {frase[:3]}")
+    print(f"Las tres últimas letras de la frase son: {frase[-3:]}")
+    print(f"La frase con todas las 'a' reemplazadas por una 'e' es: {frase.replace('a', 'e')}")
+    print(f"La frase con todas las 'a' reemplazadas por una 'e' son regex es: {re.sub('[aá]', 'e', frase)}")
+    return frase
 
+pide_frase()
 
 #Ejercicio 3: Información de Contacto (Diccionario)#
 """
