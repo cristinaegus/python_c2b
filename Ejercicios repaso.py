@@ -95,6 +95,45 @@ pide_frase()
 5. Muestra todos los valores (values) del diccionario.
 """
 
+def verifica_telefono(telefono):
+    while True:
+        telefono_num = "".join(filter(str.isdigit, telefono))
+        if len(telefono_num) == 9 and telefono_num[0] in "679":
+            return telefono_num
+        else:
+            telefono = input("El teléfono no es correcto. Introduce un teléfono correcto: ")
+
+verifica_telefono("1234sdfsgsd .56e789")
+
+def contacto():
+    # 1. Crear el diccionario contacto
+    contacto = {
+        'nombre': input("Ingrese el nombre: "),
+        'telefono': verifica_telefono(input("Ingrese el teléfono: ")),
+        'email': input("Ingrese el email: ")
+    }
+
+    # 2. Mostrar la información del contacto
+    print(f"\nInformación del contacto:")
+    print(f"Nombre: {contacto['nombre']}, Teléfono: {contacto['telefono']}, Email: {contacto['email']}")
+
+    # 3. Preguntar por ciudad
+    agregar_ciudad = input("\n¿Desea añadir una ciudad al contacto? (s/n): ").lower()
+    if agregar_ciudad == 's':
+        contacto['ciudad'] = input("Ingrese la ciudad: ")
+        print("¡Ciudad añadida correctamente!")
+
+    # 4. Mostrar todas las claves
+    print("\nClaves del diccionario:", list(contacto.keys()))  # Convertimos a lista para mejor visualización
+
+    # 5. Mostrar todos los valores
+    print("\nValores del diccionario:", list(contacto.values()))
+
+    return contacto
+
+contacto_resultante = contacto()
+print("Diccionario final completo:", contacto_resultante)
+
 
 #Ejercicio 4: Elementos Únicos (Sets)#
 """
