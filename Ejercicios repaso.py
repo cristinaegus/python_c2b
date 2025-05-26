@@ -365,6 +365,29 @@ def contar_palabras(palabras):
             frecuencia[palabra] = 1
     return frecuencia
 
+"""
+frecuencia.items():
+    Convierte el diccionario en una lista de tuplas (clave, valor).
+
+    Ejemplo: {'a': 5, 'b': 3} → [('a', 5), ('b', 3)]
+
+sorted() con key=lambda item: item[1]:
+    Ordena la lista de tuplas según los valores (frecuencias).
+
+    item[1] se refiere al segundo elemento de cada tupla (el valor numérico).
+
+    lambda es una función anónima que define el criterio de ordenación.
+
+reverse=True:
+    Ordena en orden descendente (de mayor a menor frecuencia).
+
+[:n]:
+    Toma los primeros n elementos de la lista ordenada.
+
+Retorno:
+    Devuelve una lista con las n tuplas (palabra, frecuencia) más frecuentes.
+"""
+
 def palabras_mas_frecuentes(frecuencia, n=10):
     palabras_ordenadas = sorted(frecuencia.items(), key=lambda item: item[1], reverse=True)
     return palabras_ordenadas[:n]
