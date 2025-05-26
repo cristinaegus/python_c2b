@@ -11,6 +11,7 @@ class Persona:
         self.ubicacion = "Rentería"
         self.fichajes = []
         self.sueldo_hora = sueldo_hora
+        self.bono_transporte = 0
 
     # Los métodos son funciones con "self"
     def presentarse(self):
@@ -21,6 +22,7 @@ class Persona:
         print("Biip, Biiiiip")
         self.trabajando = not self.trabajando
         self.fichajes.append(datetime.datetime.now())
+        self.bono_transporte += 1
 
     def viaja(self, nueva_ubicacion):
         print(f"{self.ubicacion} -----> {nueva_ubicacion}")
@@ -37,6 +39,7 @@ class Persona:
     def calcula_sueldo(self):
         tiempo_trabajado = self.calcula_trabajo()
         sueldo = tiempo_trabajado.total_seconds() / 3600 * self.sueldo_hora
+        sueldo += self.bono_transporte
         print(f"Sueldo: {sueldo}")
         return sueldo
 
