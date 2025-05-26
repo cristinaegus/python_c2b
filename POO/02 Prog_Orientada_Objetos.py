@@ -225,7 +225,7 @@ class Galleta:
 
 
 pretzel = Galleta(color = "marrón", sabor = "salada")
-artiach = Galleta(color="blanco", sabor ="dulce")
+artiach = Galleta(color="blanco")
 # Los atributos sabor y color se escriben al crear la galleta
 pretzel.sabor
 # El atributo chocolate está predefinido
@@ -244,7 +244,7 @@ dir(artiach)
 # ____________
 """
 Si existe un constructor también debe existir un destructor que se llame al eliminar 
-el objeto para que encargue de las tareas de limpieza y vaciar la memoria. 
+el objeto para que se encargue de las tareas de limpieza y vaciar la memoria. 
 
 Ese es el papel del método especial del. Es muy raro sobreescribir este método 
 porque se maneja automáticamente, pero es interesante saber que existe.
@@ -316,7 +316,7 @@ artiach.__str__()
 Hay que tener en cuenta que este método debe devolver la cadena en lugar de 
 mostrar algo por pantalla, ese es el funcionamiento que se espera de él.
 """
-
+del artiach
 # _______
 #   len 
 # _______
@@ -381,6 +381,7 @@ print(cancion.anio)
 # Crear la clase coche que incluya los atributos 
 # "marca", "modelo", "longitud" y "precio"
 # Atribuirles métodos que permitan imprimir en la pantalla:
+
 # Un mensaje al borrar el objeto
 #del(coche1)
 
@@ -396,15 +397,40 @@ print(cancion.anio)
 #   pass
 
 class Coche:
-    pass
-    
+    ruedas = 4
+    def __init__(self, marca, modelo, longitud, precio):
+        self.marca = marca
+        self.modelo = modelo
+        self.longitud = longitud
+        self.precio = precio
+        self.puertas = 4
 
+    def __str__(self):
+        return f"{self.marca} {self.modelo}"
+
+    def __del__(self):
+        print(f"Se ha eliminado el coche {self}")
+    
+    def presentarse(self):
+        print(f"Hola soy un coche {self.marca} {self.modelo}")
+
+    def __len__(self):
+        return int(self.longitud*100)
+
+    def __gt__(self, otro):
+        return self.precio > otro.precio
+    
+    def __eq__(self, otro):
+        return self.precio > otro.precio
+    
 # Crear objetos de la clase coche
 # Atribuirles características que se creen al inicializar, basadas en datos
 # introducidos al crear los objetos
 coche1 = Coche("Renault", "Megane", 3.5, 3000)
 coche2 = Coche("BMW", "530", 3.7, 2500)
 
+print(coche2)
+len(coche2)
 coche1.presentarse()
 coche2.presentarse()
 
@@ -413,11 +439,11 @@ print(coche2)
 
 len(coche2)
 
-coche1 > coche2
+coche2 < coche1
 
-print(max(coche1, coche2))
+print(min(coche1, coche2))
 
-coche3 = Coche("Seat", "Ibiza", 2.5, 2000)
+coche3 = Coche("Seat", "Ibiza", 2.5, 5000)
 print(max(coche1, coche2, coche3))
 
 
