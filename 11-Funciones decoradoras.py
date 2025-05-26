@@ -120,7 +120,7 @@ def division_y_print(x, y, mensaje):
 
 
 division_y_print(2, 0)
-division_y_print(2, 0, "Hola")
+division_y_print(2, 7, "Hola")
 
 # La clave de definir bien un decorador es que reciba una función y devuelva
 # otra función declarada dentro de ella y que añada algo a la recibida
@@ -189,22 +189,20 @@ tiempo_transcurrido = fin - inicio
 
 def medir_tiempo(func):
     def funcion_medida(mensaje):
-        mensaje = mensaje.replace("Hola", "Adiós")
         inicio = time.time()
         salida = func(mensaje)
         final = time.time()
         print(f"Tiempo de ejecución de la función {func.__name__}, {final - inicio} segundos")
-        salida = salida.upper()
         return salida
     return funcion_medida
 
 
 def medir_tiempo(func):
-    def funcion_medida(**mensaje):
+    def funcion_medida(*mensaje):
         inicio = time.time()
         for elemento in mensaje:
             print(elemento)
-        salida = func(**mensaje)
+        salida = func(*mensaje)
         final = time.time()
         print(f"Tiempo de ejecución de la función {func.__name__}, {final - inicio} segundos")
         return salida
@@ -213,7 +211,10 @@ def medir_tiempo(func):
 @medir_tiempo
 def ejemplo(m1, m2, m3):
     time.sleep(1)
-    return m2
+    return m1
+
+ejemplo("Hola")
+
 
 ejemplo(m1 = "Hola", m2 = "Adios", m3 = "Hasta Luego")
 
@@ -222,8 +223,8 @@ def ejemplo3(mensaje):
     time.sleep(3)
     return mensaje
 
-ejemplo3("Hola que tal")
-ejemplo3("Hola como estás")
+ejemplo3(mensaje = "Hola como estás")
+ejemplo3(mensaje = "Hola que tal")
 
 
 #Ejercicio 2: Decorador de Validación de Parámetros
@@ -233,9 +234,31 @@ cumplen ciertas condiciones antes de llamar a la función.
 
 Por ejemplo, puedes implementar una validación que asegure que los números ingresados son positivos.
 """
+def validar_parametros(func):
+    def wrapper(*numeros):
+        for numero in numeros:
+            if not isinstance(numero, (float, int)):
+                raise ValueError("El parámetro debe ser un número")
+            if numero < 0:
+                print("El número debe ser positivo")
+                raise ValueError("El número debe ser positivo")
+        salida = func(*numeros)
+        return salida
+    return wrapper
 
+@validar_parametros
+def cuadrado(numero1, numero2):
+    print(numero1 * numero2)
+    return numero1 * numero2
 
+@validar_parametros
+def volumen(numero1, numero2, numero3):
+    print(numero1 * numero2 * numero3)
+    return numero1 * numero2 * numero3
 
+volumen(2, 3, 12)
+
+cuadrado(23, 25)
 
 #Ejercicio 3: Decorador para Logs
 """
@@ -243,9 +266,19 @@ Implementa un decorador llamado registro que registre información sobre la llam
 como el nombre de la función, los argumentos y el resultado. Imprime esta información en la consola 
 cada vez que la función decorada se ejecuta.
 """
+def registro(func):
+    def wrapper(*args, **kwargs):
+        resultado = func(*args, **kwargs)
+        print(f"Registro - Función: {func.__name__}, Argumentos posicionales: {args}, Argumentos por clave: {kwargs} Resultado: {resultado}")
+        return resultado
+    return wrapper
 
+@registro
+@validar_parametros
+def volumen(alto, ancho, largo):
+    return alto * ancho * largo
 
-
+volumen(2, 3, 12)
 
 
 
@@ -253,3 +286,19 @@ cada vez que la función decorada se ejecuta.
 """
 Construir un decorador que compruebe que la salida de una función sea un número
 """
+
+
+def validar_salida(func):
+    def wrapper(*args, **kwargs):
+        resultado = func(*args, **kwargs)
+        if not isinstance(resultado, (int, float)):
+            raise ValueError(f"La función {func.__name__} debe devolver un número.")
+        return resultado
+    return wrapper
+
+@validar_salida
+def suma(a, b):
+    return a + b
+
+print(suma(3, 5))  # Funciona correctamente
+print(suma("3", "5"))  # Lanza una excepción

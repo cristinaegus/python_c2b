@@ -346,7 +346,7 @@ def carga_archivo(nombre_archivo):
 
 def limpiar_texto(texto):
     texto = texto.lower()
-    texto = texto.replace(",", "").replace(".", "").replace(";", "").replace(":", "").replace("!", "").replace("?", "")
+    texto = texto.replace(",", "").replace(".", "").replace(";", "").replace(":", "").replace("!", "").replace("?", "").replace("-\n", "")
     texto = texto.replace("\n", " ")
     return texto
 

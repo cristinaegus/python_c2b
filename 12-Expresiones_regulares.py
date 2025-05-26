@@ -4,7 +4,8 @@ Las expresiones regulares son como una especie de mini lenguaje dentro de otro l
 
 Son secuencias de caracteres que forman un patrón que sirve para realizar búsquedas de texto.
 
-Es importante conocerlas ya que en muchas ocasiones nos vamos a ver en la necesidad de buscar un mismo texto escrito de formas diferentes, o bien textos similares.
+Es importante conocerlas ya que en muchas ocasiones nos vamos a ver en la necesidad de buscar un mismo texto
+ escrito de formas diferentes, o bien textos similares.
 """
 
 import re
@@ -102,7 +103,7 @@ texto = "mi gatos y tus gatas son bonitos"
 """
 Busca el patrón exclusivamente al principio del texto.
 """
-# texto = "A mis gatos"
+# texto"A mis gatos" = "A mis gatos"
 if re.match(patron, texto):
     print("Se encontró una coincidencia al inicio del texto")
 else:
@@ -115,7 +116,8 @@ type(x)
 
 dir(x)
 
-"""los métodos `group`, `groupdict`, `groups`, `lastgroup` se usan cuando el patrón tiene grupos."""
+"""los métodos `group`, `groupdict`, `groups`, `lastgroup` se usan 
+cuando el patrón tiene grupos."""
 
 resultado = re.match(r'(?P<saludo>\w+) (?P<nombre>\w+)', 'Hola Mundo')
 resultado.group(), resultado.groupdict(), resultado.groups(), resultado.lastgroup
@@ -150,7 +152,7 @@ texto = "mi gatos y tus gatas son bonitos"
 x = re.search(patron, texto)
 
 """Posiciones inicial y final de **la primera coincidencia**"""
-
+x.pos, x.endpos, x.re, x.string, x.start(), x.end(), x.span()
 x.regs
 
 ((inicio, fin),) = x.regs
@@ -165,7 +167,6 @@ x.group(0), x.groupdict(), x.groups(), x.lastgroup, x.lastindex, x.pos, x.endpos
 """
 Podemos recuperar el string en el que estamos buscando y el patrón que hemos usado
 """
-
 x.string, x.re
 
 # findall
@@ -209,7 +210,9 @@ x, veces = re.subn(patron, "perr", texto)
 
 # escape
 """
-Si alguno de los caracteres que se utilizan para escribir patrones fuera objeto de búsqueda debería "escaparlos" con la barra inclinada a la derecha "\". Usando `escape` me ahorro el esfuerzo.
+Si alguno de los caracteres que se utilizan para escribir patrones fuera 
+objeto de búsqueda debería "escaparlos" con la barra inclinada a la derecha 
+"\". Usando `escape` me ahorro el esfuerzo.
 """
 
 texto = "La cadena a buscar es: $a*b."
@@ -233,12 +236,13 @@ resultado.re
 
 # compile
 """
-Los patrones pueden ser tan complejos y largos que para comprobar si un patrón ha sido correctamente creado, se compila
+Los patrones pueden ser tan complejos y largos que para comprobar 
+si un patrón ha sido correctamente creado, se compila
 """
 
 patron_email = re.compile(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$')
 
-if re.fullmatch(patron_email, "aitor.donado@gmail.com"):
+if re.fullmatch(patron_email, "aitor.donado@gmail.es"):
     print("Es correcto")
 else:
     print("Email incorrecto")
