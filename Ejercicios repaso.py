@@ -356,4 +356,17 @@ def dividir_texto(texto):
 
 dividir_texto(limpiar_texto(carga_archivo("lista_compra.txt")))
 
-carga_archivo("lista_compra.txt").limpiar_texto().dividir_texto()
+def contar_palabras(palabras):
+    frecuencia = {}
+    for palabra in palabras:
+        if palabra in frecuencia:
+            frecuencia[palabra] += 1
+        else:
+            frecuencia[palabra] = 1
+    return frecuencia
+
+def palabras_mas_frecuentes(frecuencia, n=10):
+    palabras_ordenadas = sorted(frecuencia.items(), key=lambda item: item[1], reverse=True)
+    return palabras_ordenadas[:n]
+
+palabras_mas_frecuentes(contar_palabras(dividir_texto(limpiar_texto(carga_archivo("lista_compra.txt")))))
