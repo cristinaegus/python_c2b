@@ -1,18 +1,9 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Mar 13 17:46:48 2023
-
-@author: laptop
-"""
-
 ####################################
 # Programación Orientada a Objetos #
 ####################################
 # Creamos una aplicación para gestionar el "Personal" de una empresa
 
 import datetime
-
 #----------------------------------
 # Etapa1: Creo una clase "Persona"
 #----------------------------------
@@ -26,6 +17,7 @@ class Persona:
         # Estados
         self.trabajando = False
         self.ubicacion = "Rentería"
+        self.fichajes = []
 
     # Los métodos son funciones con "self"
     def presentarse(self):
@@ -35,6 +27,7 @@ class Persona:
     def ficha(self):
         print("Biip, Biiiiip")
         self.trabajando = not self.trabajando
+        self.fichajes.append(datetime.datetime.now())
 
     def viaja(self, nueva_ubicacion):
         print(f"{self.ubicacion} -----> {nueva_ubicacion}")
@@ -69,20 +62,36 @@ print(f"¿Dónde está el director? {director.ubicacion}")
 print(f"¿Está trabajando {secretario.nombre}? {secretario.trabajando}")
 print(f"¿Dónde está el secretario? {secretario.ubicacion}")
 
-
-#----------------------------------------------------------
+secretario = Persona('Juanito', 'Pérez', 'García')#----------------------------------------------------------
 # Etapa1: Vamos a llevar una contabilidad de los fichajes
 #----------------------------------------------------------
+secretario = Persona('Juanito', 'Pérez', 'García')
+secretario.ficha()
 
+secretario.fichajes
 #----------------------------------------------------------
 # Etapa2: Vamos a llevar una contabilidad del tiempo trabajado
 #----------------------------------------------------------
+from POO.personal import Persona
+secretario = Persona('Juanito', 'Pérez', 'García')
+secretario.ficha()
+
+secretario.ficha()
+
+secretario.calcula_trabajo()
 
 #----------------------------------------------------------
 # Etapa2: Vamos a llevar una contabilidad del sueldo acumulado
 #----------------------------------------------------------
+from POO.personal import Persona
+secretario = Persona('Juanito', 'Pérez', 'García')
+secretario.ficha()
 
+secretario.ficha()
 
+secretario.calcula_trabajo()
+
+secretario.calcula_sueldo()
 
 
 # Crear un método que asigne una dieta de transporte de un euro cada vez que una persona fiche
