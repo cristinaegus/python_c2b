@@ -221,7 +221,6 @@ from POO.activos import Coche
 director = Directivo('Juan', 'Pérez', 'López')
 
 secretario = Oficinista('Juanito', 'Pérez', 'García')
-peon = Peon('Pepe', 'Pérez', 'García')
 
 # El directivo, tiene coche de empresa, y métodos asociados a él.
 director.coche_empresa = Coche("Mercedes", "Maybach", 4.5,100000)
@@ -244,4 +243,10 @@ secretario.calcula_sueldo()
 
 
 # El peón tiene guardias... etc
+peon = Peon('Pepe', 'Pérez', 'García')
 
+
+peon.ficha()
+peon.guardias
+peon.ficha()
+peon.guardias

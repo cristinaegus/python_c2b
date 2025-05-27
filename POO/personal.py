@@ -69,7 +69,22 @@ class Oficinista(Empleado):
         return sueldo
 
 class Peon(Empleado):
-    pass
+    def __init__(self, nombre, apellido1, apellido2, sueldo_hora=10):
+        super().__init__(nombre, apellido1, apellido2, sueldo_hora)
+        self.guardias = 0
+
+    def ficha(self):
+        super().ficha()
+        if self.trabajando:
+            if self.fichajes[-1].hour > 21 or self.fichajes[-1].hour < 11:
+                self.guardias += 1
+                print("Guardia nocturna asignada")
+
+    def calcula_sueldo(self):
+        sueldo = super().calcula_sueldo()
+        sueldo = sueldo + self.guardias * 10
+        return sueldo
+    
 
 # print(__name__)
 import time
