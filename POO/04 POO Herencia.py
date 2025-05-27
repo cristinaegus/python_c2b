@@ -218,11 +218,10 @@ issubclass(Animal_domestico, Mamifero)
 # Las clases "hijo" serán Directivo, Oficinista, Peon
 from POO.personal import Directivo, Oficinista, Peon
 from POO.activos import Coche
-director = Directivo('Juan', 'Pérez', 'López')
 
-secretario = Oficinista('Juanito', 'Pérez', 'García')
 
 # El directivo, tiene coche de empresa, y métodos asociados a él.
+director = Directivo('Juan', 'Pérez', 'López')
 director.coche_empresa = Coche("Mercedes", "Maybach", 4.5,100000)
 director.asigna_gasolina(300)
 

@@ -23,6 +23,11 @@ class Empleado:
         self.trabajando = not self.trabajando
         self.fichajes.append(datetime.datetime.now())
         self.bono_transporte += 1
+        if self.trabajando:
+            self.imprime_actividades()
+
+    def imprime_actividades(self):
+        pass
 
     def viaja(self, nueva_ubicacion):
         print(f"{self.ubicacion} -----> {nueva_ubicacion}")
@@ -52,6 +57,13 @@ class Directivo(Empleado):
     def asigna_gasolina(self, litros):
         self.gasolina += litros 
         print(f"Gasolina asignada: {self.gasolina} litros")
+    
+    def imprime_actividades(self):
+        print("Actividades del directivo:")
+        print("1. Reuniones")
+        print("2. Viajes")
+        print("3. Presentaciones")
+        print("4. Negociaciones")
 
 
 class Oficinista(Empleado):
@@ -67,6 +79,13 @@ class Oficinista(Empleado):
         sueldo = super().calcula_sueldo()
         sueldo = sueldo + self.bonus
         return sueldo
+    
+    def imprime_actividades(self):  
+        print("Actividades del oficinista:")
+        print("1. Reuniones")
+        print("2. Llamadas telefónicas")
+        print("3. Correos electrónicos")
+        print("4. Gestión de documentos")
 
 class Peon(Empleado):
     def __init__(self, nombre, apellido1, apellido2, sueldo_hora=10):
@@ -84,6 +103,13 @@ class Peon(Empleado):
         sueldo = super().calcula_sueldo()
         sueldo = sueldo + self.guardias * 10
         return sueldo
+    
+    def imprime_actividades(self):  
+        print("Actividades del peón")
+        print("1. Limpieza")
+        print("2. Operar con la máquina")
+        print("3. Mantenimiento de instalaciones")
+        print("4. Seguridad")
     
 
 # print(__name__)

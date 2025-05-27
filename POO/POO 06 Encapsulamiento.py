@@ -14,7 +14,6 @@ Created on Mon Mar 13 17:46:48 2023
 manipulados directamente desde fuera de la clase, lo que garantiza la integridad de los 
 datos internos de la clase. """
 
-
 class Persona:
     def __init__(self, nombre, edad):
         self.nombre = nombre
@@ -45,6 +44,7 @@ vigilante.__edad = 25
 
 dir(vigilante)
 vigilante.saludar()
+vigilante._Persona__edad = 7
 
 vigilante.set_edad(51)
 vigilante.get_edad()
@@ -66,14 +66,12 @@ class Persona:
         else:
             return "No te doy la información"
 
-
     @edad.setter
     def edad(self, edad):    
         if edad < 0 or edad > 120:
             raise ValueError("La edad no puede ser negativa ni mayor que 120")
         elif input("Escribe password: ") == "password": 
             self.__edad = edad
-
 
     def saludar(self):
         print(f'Hola, mi nombre es {self.nombre} y tengo {self.__edad} años')
@@ -82,6 +80,8 @@ class Persona:
 vigilante = Persona("Pedro", 50)
 vigilante.edad
 vigilante.edad = 130
+
+
 vigilante.edad = -3
 vigilante.edad = 51
 vigilante.edad
@@ -121,8 +121,10 @@ secretario = Persona('Juanito', 'Pérez', 'García')
 
 director.presentarse()
 secretario.presentarse()
-secretario.sale_de_viaje("Bilbao")
+secretario.__ubicacion = "Bilbao" # Ya no funciona
 
+secretario.sale_de_viaje("Bilbao")
+secretario._Persona__esta_en() # Ya no funciona
 
 print(f"¿Está trabajando {director.nombre}? {director.trabajando}")
 print(f"¿Está trabajando {secretario.nombre}? {secretario.trabajando}")
