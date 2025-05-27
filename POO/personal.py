@@ -7,10 +7,10 @@ class Empleado:
         self.apellido1 = apellido1
         self.apellido2 = apellido2
         # Estados
-        self.trabajando = False
+        self.__trabajando = False
         self.ubicacion = "Rentería"
         self.fichajes = []
-        self.sueldo_hora = sueldo_hora
+        self.__sueldo_hora = sueldo_hora
         self.bono_transporte = 0
 
     # Los métodos son funciones con "self"
@@ -20,11 +20,22 @@ class Empleado:
 
     def ficha(self):
         print("Biip, Biiiiip")
-        self.trabajando = not self.trabajando
+        self.__trabajando = not self.__trabajando
         self.fichajes.append(datetime.datetime.now())
         self.bono_transporte += 1
-        if self.trabajando:
+        if self.__trabajando:
             self.imprime_actividades()
+
+    @property
+    def sueldo_hora(self):
+        print("Estás accediendo al sueldo")
+        return self.__sueldo_hora
+
+    @sueldo_hora.setter
+    def sueldo_hora(self, nuevo_valor):
+        print("Estás modificando el sueldo")
+        self.__sueldo_hora += nuevo_valor
+        print(f"Nuevo sueldo: {self.__sueldo_hora}")
 
     def imprime_actividades(self):
         pass
@@ -33,7 +44,7 @@ class Empleado:
         print(f"{self.ubicacion} -----> {nueva_ubicacion}")
         self.ubicacion = nueva_ubicacion
 
-    def calcula_trabajo(self):
+    def __calcula_trabajo(self):
         tiempo_inicial = datetime.timedelta(0)
         entradas = self.fichajes[::2]
         salidas = self.fichajes[1::2]
@@ -42,8 +53,8 @@ class Empleado:
         return tiempo_trabajado
     
     def calcula_sueldo(self):
-        tiempo_trabajado = self.calcula_trabajo()
-        sueldo = tiempo_trabajado.total_seconds() / 3600 * self.sueldo_hora
+        tiempo_trabajado = self.__calcula_trabajo()
+        sueldo = tiempo_trabajado.total_seconds() / 3600 * self.__sueldo_hora
         sueldo += self.bono_transporte
         print(f"Sueldo: {sueldo}")
         return sueldo
@@ -94,7 +105,7 @@ class Peon(Empleado):
 
     def ficha(self):
         super().ficha()
-        if self.trabajando:
+        if self._Empleado__trabajando:
             if self.fichajes[-1].hour > 21 or self.fichajes[-1].hour < 11:
                 self.guardias += 1
                 print("Guardia nocturna asignada")
