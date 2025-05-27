@@ -1,11 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Mar 13 17:46:48 2023
-
-@author: laptop
-"""
-
 ############
 # Herencia #
 ############
@@ -84,8 +76,9 @@ class Animal_domestico(Animal_de_granja):
 ciervo = Mamifero(comestible = True)
 ciervo.comestible
 ciervo.correr()
+ciervo.saltar()
 # El ciervo no se puede meter en una choza
-ciervo.guardar_en_choza()
+#ciervo.guardar_en_choza()
 ciervo.me_lo_como()
 
 raton = Mamifero(comestible = False)
@@ -104,7 +97,7 @@ cerdo.en_choza
 cerdo.sacar_de_choza()
 cerdo.en_choza
 
-cerdo.guadar_en_casa()
+#cerdo.guadar_en_casa()
 
 cerdo.me_lo_como()
 
@@ -134,7 +127,7 @@ perro.en_casa
 perro.sacar_de_casa()
 perro.en_casa
 
-perro.me_lo_como()
+#perro.me_lo_como()
 
 
 # ____________________________________________________
@@ -172,11 +165,13 @@ class Animal_de_granja(Mamifero):
         self.en_choza = False
 
     def me_lo_como(self):
+        super().me_lo_como()
+        """
         if self.comestible:
             print("Te has comido un animal de granja")
         else:
             print("No puedes comerte este animal")
-
+        """
 
 class Animal_domestico(Animal_de_granja):
     def __init__(self, nombre):
@@ -221,8 +216,32 @@ issubclass(Animal_domestico, Mamifero)
 
 
 # Las clases "hijo" serán Directivo, Oficinista, Peon
+from POO.personal import Directivo, Oficinista, Peon
+from POO.activos import Coche
+director = Directivo('Juan', 'Pérez', 'López')
+
+secretario = Oficinista('Juanito', 'Pérez', 'García')
+peon = Peon('Pepe', 'Pérez', 'García')
 
 # El directivo, tiene coche de empresa, y métodos asociados a él.
+director.coche_empresa = Coche("Mercedes", "Maybach", 4.5,100000)
+director.asigna_gasolina(300)
+
+director.ficha()
+director.ficha()
+director.calcula_trabajo()
+director.calcula_sueldo()
+director.coche_empresa.marca
+director.coche_empresa.presentarse()
+
 # El oficinista tiene bonuses
+secretario = Oficinista('Juanito', 'Pérez', 'García')
+secretario.ficha()
+secretario.ficha()
+secretario.calcula_trabajo()
+secretario.asigna_bonus(100)
+secretario.calcula_sueldo()
+
+
 # El peón tiene guardias... etc
 

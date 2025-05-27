@@ -1,6 +1,6 @@
 import datetime
 
-class Persona:
+class Empleado:
     def __init__(self, nombre, apellido1, apellido2, sueldo_hora=10):
         # Características
         self.nombre = nombre
@@ -43,10 +43,40 @@ class Persona:
         print(f"Sueldo: {sueldo}")
         return sueldo
 
+class Directivo(Empleado):
+    def __init__(self, nombre, apellido1, apellido2, sueldo_hora=30):
+        super().__init__(nombre, apellido1, apellido2, sueldo_hora)
+        self.coche_empresa = None
+        self.gasolina = 0
+
+    def asigna_gasolina(self, litros):
+        self.gasolina += litros 
+        print(f"Gasolina asignada: {self.gasolina} litros")
+
+
+class Oficinista(Empleado):
+    def __init__(self, nombre, apellido1, apellido2, sueldo_hora=20):
+        super().__init__(nombre, apellido1, apellido2, sueldo_hora)
+        self.bonus = 0
+
+    def asigna_bonus(self, bonus):
+        self.bonus += bonus
+        print(f"Bonus asignado: {self.bonus}")
+
+    def calcula_sueldo(self):
+        sueldo = super().calcula_sueldo()
+        sueldo = sueldo + self.bonus
+        return sueldo
+
+class Peon(Empleado):
+    pass
+
+# print(__name__)
 import time
 if __name__ == "__main__":
-    director = Persona('Juan', 'Pérez', 'López')
-    secretario = Persona('Juanito', 'Pérez', 'García')
+    director = Directivo('Juan', 'Pérez', 'López')
+    secretario = Oficinista('Juanito', 'Pérez', 'García')
+    peon = Peon('Pepe', 'Pérez', 'García')
 
     director.ficha()
     time.sleep(2)
