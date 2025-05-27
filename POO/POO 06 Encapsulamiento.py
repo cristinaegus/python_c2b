@@ -159,8 +159,10 @@ print(f"¿Dónde está el secretario? {secretario.esta_en()}")
 #___________#
 
 # Vamos a encapsular "trabajando", "sueldo_hora"... en el ejercicio del personal
-from POO.personal import Peon
+from POO.personal import Peon, Oficinista, Directivo
 peon = Peon('Pepe', 'Pérez', 'García', 40)
+secretario = Oficinista('Juan', 'García', 'López', 50)
+director = Directivo('Ana', 'García', 'López', 100)
 
 peon.__trabajando = False
 
