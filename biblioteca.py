@@ -76,4 +76,21 @@ class DVD(MaterialBiblioteca):
         print(f"Duración: {self.duracion} minutos")
         print(f"Director: {self.director}")
 
+import pickle
+class GestorBiblioteca:
+    def __init__(self):
+        self.materiales = self.cargar_materiales()
+    
+    def almacenar_materiales(self):
+        pickle.dump(self.materiales, open("materiales_biblioteca.pkl", "wb"))
+        for material in self.materiales:
+            print(f"Material '{material.titulo}' almacenado en el archivo.")
 
+    def cargar_materiales(self):
+        try:
+            materiales = pickle.load(open("materiales_biblioteca.pkl", "rb"))
+            print("Materiales cargados desde el archivo.")
+            return materiales
+        except FileNotFoundError:
+            print("No se encontró el archivo de materiales.")
+            return []
