@@ -1,3 +1,4 @@
+"""
 from biblioteca import Libro
 from biblioteca import Revista
 from biblioteca import DVD
@@ -45,24 +46,28 @@ for material in materiales_cargados_del_archivo:
     material.mostrar_info()
 
 lista_materiales =  cargar_materiales()
-
+"""
 #########################
 # Usando una aplicación #
 #########################
-import pickle
-from biblioteca import GestorBiblioteca, Libro, Revista, DVD
+from biblioteca import GestorBiblioteca, Libro, Revista, DVD, Usuario
+import uuid
 
 app = GestorBiblioteca()
 while True:
     print("1. Agregar material")
     print("2. Listar materiales")
     print("3. Buscar material")
-    print("4. Salir")
+    print("4. Borrar material")
+    print("5. Agregar_usuario")
+    print("6. Listar usuarios")
+    print("7. Agregar préstamo")
+    print("q. Salir")
     opcion = input("Seleccione una opción: ")
     if opcion == '1':
         tipo = input("Ingrese el tipo de material (libro, revista, DVD): ").lower()
         titulo = input("Ingrese el título: ")
-        codigo_inventario = input("Ingrese el codigo_inventario: ")
+        codigo_inventario = uuid.uuid4().hex[:6].upper()  # Genera un código único
         if tipo == 'libro':
             autor = input("Ingrese el autor: ")
             num_paginas = int(input("Ingrese el número de páginas: "))
@@ -87,6 +92,17 @@ while True:
         codigo_inventario = input("Ingrese el codigo_inventario del material: ")
         app.buscar_material(codigo_inventario)
     elif opcion == '4':
+        codigo_inventario = input("Ingrese el codigo_inventario del material a borrar: ")
+        app.borrar_material(codigo_inventario)
+    elif opcion == '5':
+        nombre = input("Ingrese el nombre del usuario: ")
+        apellido = input("Ingrese el apellido del usuario: ")
+        usuario = Usuario(nombre, apellido)
+        app.agregar_usuario(usuario)
+        print(f"Usuario '{usuario.nombre}' agregado a la biblioteca.")
+    elif opcion == '6':
+        app.mostrar_usuarios()
+    elif opcion == 'q':
         print("Saliendo del programa.")
         break
     else:
