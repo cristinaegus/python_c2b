@@ -41,11 +41,13 @@ while True:
             isbn = input("Ingrese el ISBN: ")
             material = Libro(titulo, codigo_inventario, autor, isbn, num_paginas)
         elif tipo == 'revista':
-            periodicidad = input("Ingrese la periodicidad: ")
-            material = Revista(titulo, codigo_inventario, periodicidad)
+            fecha_publicacion = input("Ingrese la fecha de publicación: ")
+            numero_edicion = input("Ingrese el número de edición: ")
+            material = Revista(titulo, codigo_inventario, fecha_publicacion, numero_edicion)
         elif tipo == 'dvd':
             duracion = int(input("Ingrese la duración en minutos: "))
-            material = DVD(titulo, codigo_inventario, duracion)
+            director = input("Ingrese el director: ")
+            material = DVD(titulo, codigo_inventario, duracion, director)
         else:
             print("Tipo de material no válido.")
             continue
