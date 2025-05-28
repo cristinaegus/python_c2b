@@ -9,10 +9,12 @@ class MaterialBiblioteca(ABC):
 
     @property
     def ubicacion(self):
+        print(f"Tienes permiso para ver la ubicacion del item '{self.titulo}'.")
         return self.__ubicacion
     
     @ubicacion.setter
     def ubicacion(self, nueva_ubicacion):
+        print(f"Compruebo que la ubicación está disponible para el item '{self.titulo}'.")
         self.__ubicacion = nueva_ubicacion
 
     def trasladar(self, nueva_ubicacion):
