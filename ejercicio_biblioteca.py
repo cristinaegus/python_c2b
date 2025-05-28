@@ -46,7 +46,11 @@ for material in materiales_cargados_del_archivo:
 
 lista_materiales =  cargar_materiales()
 
-from biblioteca import GestorBiblioteca
+#########################
+# Usando una aplicación #
+#########################
+import pickle
+from biblioteca import GestorBiblioteca, Libro, Revista, DVD
 
 app = GestorBiblioteca()
 while True:
@@ -75,17 +79,13 @@ while True:
         else:
             print("Tipo de material no válido.")
             continue
-        app.materiales.append(material)
-        app.almacenar_materiales()
+        app.agregar_material(material)
         print(f"Material '{material.titulo}' agregado a la biblioteca.")
     elif opcion == '2':
-        for elemento in app.materiales:
-            elemento.mostrar_info()
+        app.mostrar_materiales()
     elif opcion == '3':
         codigo_inventario = input("Ingrese el codigo_inventario del material: ")
-        for material in app.materiales:
-            if material.codigo_inventario == codigo_inventario:
-                material.mostrar_info()
+        app.buscar_material(codigo_inventario)
     elif opcion == '4':
         print("Saliendo del programa.")
         break

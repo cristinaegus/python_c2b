@@ -82,7 +82,8 @@ class GestorBiblioteca:
         self.materiales = self.cargar_materiales()
     
     def almacenar_materiales(self):
-        pickle.dump(self.materiales, open("materiales_biblioteca.pkl", "wb"))
+        with open("materiales_biblioteca.pkl", "wb") as archivo:
+            pickle.dump(self.materiales, archivo)
         for material in self.materiales:
             print(f"Material '{material.titulo}' almacenado en el archivo.")
 
@@ -94,3 +95,20 @@ class GestorBiblioteca:
         except FileNotFoundError:
             print("No se encontró el archivo de materiales.")
             return []
+    
+    def agregar_material(self, material):
+        self.materiales.append(material)
+        self.almacenar_materiales()
+
+    def mostrar_materiales(self):
+        for material in self.materiales:
+            material.mostrar_info()
+    
+    def buscar_material(self, codigo_inventario):
+        for material in self.materiales:
+            if material.codigo_inventario == codigo_inventario:
+                material.mostrar_info()
+                return
+        print("Material no encontrado.")  
+        
+          
