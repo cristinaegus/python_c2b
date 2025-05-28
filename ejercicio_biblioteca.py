@@ -24,7 +24,26 @@ for elemento in lista_materiales:
 libro1.trasladar("Sala de Lectura")
 libro1.mostrar_info()
 
+import pickle
 
+def almacenar_materiales(materiales):
+    pickle.dump(materiales, open("materiales_biblioteca.pkl", "wb"))
+    for material in materiales:
+        print(f"Material '{material.titulo}' almacenado en el archivo.")
+
+def cargar_materiales():
+    try:
+        materiales = pickle.load(open("materiales_biblioteca.pkl", "rb"))
+        print("Materiales cargados desde el archivo.")
+        return materiales
+    except FileNotFoundError:
+        print("No se encontró el archivo de materiales.")
+        return []
+
+materiales_cargados_del_archivo = cargar_materiales()
+for material in materiales_cargados_del_archivo:
+    material.mostrar_info()
+    
 while True:
     print("1. Agregar material")
     print("2. Listar materiales")
@@ -52,6 +71,8 @@ while True:
             print("Tipo de material no válido.")
             continue
         lista_materiales.append(material)
+        almacenar_materiales(lista_materiales)
+        print(f"Material '{material.titulo}' agregado a la biblioteca.")
     elif opcion == '2':
         for elemento in lista_materiales:
             elemento.mostrar_info()
