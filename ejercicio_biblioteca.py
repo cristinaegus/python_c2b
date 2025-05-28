@@ -16,5 +16,51 @@ libro1.mostrar_info()
 libro1.devolver()
 libro1.mostrar_info()   
 
+lista_materiales = [libro1, revista1, dvd1]
+for elemento in lista_materiales:
+    elemento.mostrar_info()
+
+
 libro1.trasladar("Sala de Lectura")
 libro1.mostrar_info()
+
+
+while True:
+    print("1. Agregar material")
+    print("2. Listar materiales")
+    print("3. Buscar material")
+    print("4. Salir")
+    opcion = input("Seleccione una opción: ")
+    if opcion == '1':
+        tipo = input("Ingrese el tipo de material (libro, revista, DVD): ").lower()
+        titulo = input("Ingrese el título: ")
+        codigo_inventario = input("Ingrese el codigo_inventario: ")
+        if tipo == 'libro':
+            autor = input("Ingrese el autor: ")
+            num_paginas = int(input("Ingrese el número de páginas: "))
+            isbn = input("Ingrese el ISBN: ")
+            material = Libro(titulo, codigo_inventario, autor, isbn, num_paginas)
+        elif tipo == 'revista':
+            periodicidad = input("Ingrese la periodicidad: ")
+            material = Revista(titulo, codigo_inventario, periodicidad)
+        elif tipo == 'dvd':
+            duracion = int(input("Ingrese la duración en minutos: "))
+            material = DVD(titulo, codigo_inventario, duracion)
+        else:
+            print("Tipo de material no válido.")
+            continue
+        lista_materiales.append(material)
+    elif opcion == '2':
+        for elemento in lista_materiales:
+            elemento.mostrar_info()
+    elif opcion == '3':
+        codigo_inventario = input("Ingrese el codigo_inventario del material: ")
+        for material in lista_materiales:
+            if material.codigo_inventario == codigo_inventario:
+                material.mostrar_info()
+    elif opcion == '4':
+        print("Saliendo del programa.")
+        break
+    else:
+        print("Opción no válida. Intente de nuevo.")
+
