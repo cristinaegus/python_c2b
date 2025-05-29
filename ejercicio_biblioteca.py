@@ -62,6 +62,7 @@ while True:
     print("5. Agregar_usuario")
     print("6. Listar usuarios")
     print("7. Agregar préstamo")
+    print("8. Listar préstamos")
     print("q. Salir")
     opcion = input("Seleccione una opción: ")
     if opcion == '1':
@@ -102,6 +103,12 @@ while True:
         print(f"Usuario '{usuario.nombre}' agregado a la biblioteca.")
     elif opcion == '6':
         app.mostrar_usuarios()
+    elif opcion == '7':
+        id_usuario = input("Ingrese id_usuario del usuario: ")
+        id_material = input("Ingrese id_material del material: ")
+        app.prestar_material(id_usuario, id_material)
+    elif opcion == '8':
+        app.mostrar_prestamos()
     elif opcion == 'q':
         print("Saliendo del programa.")
         break
