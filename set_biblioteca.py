@@ -1,11 +1,13 @@
-# postgresql://dvm_owner:HKRBx8Pmz7Er@ep-plain-wave-a5cnkp69-pooler.us-east-2.aws.neon.tech/dvm?sslmode=require
-# set_biblioteca.py
 import psycopg2
 
+# Leer CONN_STR desde un archivo .env
+from dotenv import load_dotenv
+import os
+load_dotenv()
+CONN_STR = os.getenv('CONN_STR')
+
 # Conexión a la base de datos
-conexion = psycopg2.connect(
-    "postgresql://dvm_owner:HKRBx8Pmz7Er@ep-plain-wave-a5cnkp69-pooler.us-east-2.aws.neon.tech/dvm?sslmode=require"
-)
+conexion = psycopg2.connect(CONN_STR)
 
 cursor = conexion.cursor()
 
